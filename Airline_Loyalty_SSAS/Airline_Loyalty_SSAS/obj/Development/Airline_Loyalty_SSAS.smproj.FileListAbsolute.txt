@@ -1,8 +1,0 @@
-C:\Users\EL11_gazy\source\repos\Airline_Loyalty_SSAS\Airline_Loyalty_SSAS\bin\Model.asdatabase
-C:\Users\EL11_gazy\source\repos\Airline_Loyalty_SSAS\Airline_Loyalty_SSAS\bin\Model.deploymenttargets
-C:\Users\EL11_gazy\source\repos\Airline_Loyalty_SSAS\Airline_Loyalty_SSAS\bin\Model.deploymentoptions
-C:\Users\EL11_gazy\source\repos\Airline_Loyalty_SSAS\Airline_Loyalty_SSAS\obj\Development\Airline_Loyalty_SSAS.smproj.AssemblyReference.cache
-C:\Users\EL11_gazy\source\repos\Airline_Loyalty_SSAS\Airline_Loyalty_SSAS\obj\Development\Airline_Loyalty_SSAS.smproj.CoreCompileInputs.cache
-C:\Users\EL11_gazy\source\repos\Airline_Loyalty_SSAS\Airline_Loyalty_SSAS\obj\Development\Model.asdatabase
-C:\Users\EL11_gazy\source\repos\Airline_Loyalty_SSAS\Airline_Loyalty_SSAS\obj\Development\Model.deploymentoptions
-C:\Users\EL11_gazy\source\repos\Airline_Loyalty_SSAS\Airline_Loyalty_SSAS\obj\Development\Model.deploymenttargets
