@@ -1,0 +1,727 @@
+{
+  "name": "Airline_Loyalty_SSAS",
+  "compatibilityLevel": 1200,
+  "model": {
+    "culture": "en-US",
+    "dataSources": [
+      {
+        "name": "SqlServer DESKTOP-EEQM3AQ DWH_Airline_Loyalty",
+        "connectionString": "Provider=SQLOLEDB;Data Source=DESKTOP-EEQM3AQ;Initial Catalog=DWH_Airline_Loyalty;Integrated Security=SSPI;Persist Security Info=false",
+        "impersonationMode": "impersonateServiceAccount",
+        "annotations": [
+          {
+            "name": "ConnectionEditUISource",
+            "value": "SqlServer"
+          }
+        ]
+      }
+    ],
+    "tables": [
+      {
+        "name": "Dim_City",
+        "columns": [
+          {
+            "name": "city_id",
+            "dataType": "int64",
+            "sourceColumn": "city_id",
+            "sourceProviderType": "Integer"
+          },
+          {
+            "name": "City",
+            "dataType": "string",
+            "sourceColumn": "City",
+            "sourceProviderType": "WChar",
+            "dataCategory": "City"
+          },
+          {
+            "name": "Postal_Code",
+            "dataType": "string",
+            "sourceColumn": "Postal_Code",
+            "sourceProviderType": "WChar",
+            "dataCategory": "PostalCode"
+          },
+          {
+            "name": "con_id",
+            "dataType": "int64",
+            "sourceColumn": "con_id",
+            "sourceProviderType": "Integer"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "Dim_City",
+            "dataView": "full",
+            "source": {
+              "type": "query",
+              "query": " \t\t\t\tSELECT [dbo].[Dim_City].*   FROM [dbo].[Dim_City] ",
+              "dataSource": "SqlServer DESKTOP-EEQM3AQ DWH_Airline_Loyalty"
+            }
+          }
+        ],
+        "measures": [
+          {
+            "name": "City Count",
+            "expression": "DISTINCTCOUNT([City])"
+          }
+        ],
+        "annotations": [
+          {
+            "name": "_TM_ExtProp_QueryDefinition",
+            "value": " \t\t\t\tSELECT [dbo].[Dim_City].*   FROM [dbo].[Dim_City] "
+          },
+          {
+            "name": "_TM_ExtProp_DbTableName",
+            "value": "Dim_City"
+          },
+          {
+            "name": "_TM_ExtProp_DbSchemaName",
+            "value": "dbo"
+          }
+        ]
+      },
+      {
+        "name": "Dim_Country",
+        "columns": [
+          {
+            "name": "con_id",
+            "dataType": "int64",
+            "sourceColumn": "con_id",
+            "sourceProviderType": "Integer"
+          },
+          {
+            "name": "Country",
+            "dataType": "string",
+            "sourceColumn": "Country",
+            "sourceProviderType": "WChar"
+          },
+          {
+            "name": "Province",
+            "dataType": "string",
+            "sourceColumn": "Province",
+            "sourceProviderType": "WChar",
+            "dataCategory": "StateOrProvince"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "Dim_Country",
+            "dataView": "full",
+            "source": {
+              "type": "query",
+              "query": " \t\t\t\tSELECT [dbo].[Dim_Country].*   FROM [dbo].[Dim_Country] ",
+              "dataSource": "SqlServer DESKTOP-EEQM3AQ DWH_Airline_Loyalty"
+            }
+          }
+        ],
+        "measures": [
+          {
+            "name": "Province Count",
+            "expression": "DISTINCTCOUNT([Province])"
+          }
+        ],
+        "annotations": [
+          {
+            "name": "_TM_ExtProp_QueryDefinition",
+            "value": " \t\t\t\tSELECT [dbo].[Dim_Country].*   FROM [dbo].[Dim_Country] "
+          },
+          {
+            "name": "_TM_ExtProp_DbTableName",
+            "value": "Dim_Country"
+          },
+          {
+            "name": "_TM_ExtProp_DbSchemaName",
+            "value": "dbo"
+          }
+        ]
+      },
+      {
+        "name": "Dim_Date",
+        "columns": [
+          {
+            "name": "Date_Key",
+            "dataType": "int64",
+            "sourceColumn": "Date_Key",
+            "sourceProviderType": "Integer"
+          },
+          {
+            "name": "Year",
+            "dataType": "int64",
+            "sourceColumn": "Year",
+            "sourceProviderType": "Integer"
+          },
+          {
+            "name": "Month",
+            "dataType": "int64",
+            "sourceColumn": "Month",
+            "sourceProviderType": "Integer"
+          },
+          {
+            "name": "MonthName",
+            "dataType": "string",
+            "sourceColumn": "MonthName",
+            "sortByColumn": "Month",
+            "sourceProviderType": "WChar"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "Dim_Date",
+            "dataView": "full",
+            "source": {
+              "type": "query",
+              "query": " \t\t\t\tSELECT [dbo].[Dim_Date].*   FROM [dbo].[Dim_Date] ",
+              "dataSource": "SqlServer DESKTOP-EEQM3AQ DWH_Airline_Loyalty"
+            }
+          }
+        ],
+        "annotations": [
+          {
+            "name": "_TM_ExtProp_QueryDefinition",
+            "value": " \t\t\t\tSELECT [dbo].[Dim_Date].*   FROM [dbo].[Dim_Date] "
+          },
+          {
+            "name": "_TM_ExtProp_DbTableName",
+            "value": "Dim_Date"
+          },
+          {
+            "name": "_TM_ExtProp_DbSchemaName",
+            "value": "dbo"
+          }
+        ]
+      },
+      {
+        "name": "Dim_Education",
+        "columns": [
+          {
+            "name": "education_id",
+            "dataType": "int64",
+            "sourceColumn": "education_id",
+            "sourceProviderType": "Integer"
+          },
+          {
+            "name": "Education",
+            "dataType": "string",
+            "sourceColumn": "Education",
+            "sourceProviderType": "WChar"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "Dim_Education",
+            "dataView": "full",
+            "source": {
+              "type": "query",
+              "query": " \t\t\t\tSELECT [dbo].[Dim_Education].*   FROM [dbo].[Dim_Education] ",
+              "dataSource": "SqlServer DESKTOP-EEQM3AQ DWH_Airline_Loyalty"
+            }
+          }
+        ],
+        "annotations": [
+          {
+            "name": "_TM_ExtProp_QueryDefinition",
+            "value": " \t\t\t\tSELECT [dbo].[Dim_Education].*   FROM [dbo].[Dim_Education] "
+          },
+          {
+            "name": "_TM_ExtProp_DbTableName",
+            "value": "Dim_Education"
+          },
+          {
+            "name": "_TM_ExtProp_DbSchemaName",
+            "value": "dbo"
+          }
+        ]
+      },
+      {
+        "name": "Dim_Enrollment_Type",
+        "columns": [
+          {
+            "name": "enr_id",
+            "dataType": "int64",
+            "sourceColumn": "enr_id",
+            "sourceProviderType": "Integer"
+          },
+          {
+            "name": "Enrollment_Type",
+            "dataType": "string",
+            "sourceColumn": "Enrollment_Type",
+            "sourceProviderType": "WChar"
+          },
+          {
+            "name": "Loyalty_Card",
+            "dataType": "string",
+            "sourceColumn": "Loyalty_Card",
+            "sourceProviderType": "WChar"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "Dim_Enrollment_Type",
+            "dataView": "full",
+            "source": {
+              "type": "query",
+              "query": " \t\t\t\tSELECT [dbo].[Dim_Enrollment_Type].*   FROM [dbo].[Dim_Enrollment_Type] ",
+              "dataSource": "SqlServer DESKTOP-EEQM3AQ DWH_Airline_Loyalty"
+            }
+          }
+        ],
+        "annotations": [
+          {
+            "name": "_TM_ExtProp_QueryDefinition",
+            "value": " \t\t\t\tSELECT [dbo].[Dim_Enrollment_Type].*   FROM [dbo].[Dim_Enrollment_Type] "
+          },
+          {
+            "name": "_TM_ExtProp_DbTableName",
+            "value": "Dim_Enrollment_Type"
+          },
+          {
+            "name": "_TM_ExtProp_DbSchemaName",
+            "value": "dbo"
+          }
+        ]
+      },
+      {
+        "name": "Dim_Gender",
+        "columns": [
+          {
+            "name": "gen_id",
+            "dataType": "int64",
+            "sourceColumn": "gen_id",
+            "sourceProviderType": "Integer"
+          },
+          {
+            "name": "Gender",
+            "dataType": "string",
+            "sourceColumn": "Gender",
+            "sourceProviderType": "WChar"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "Dim_Gender",
+            "dataView": "full",
+            "source": {
+              "type": "query",
+              "query": " \t\t\t\tSELECT [dbo].[Dim_Gender].*   FROM [dbo].[Dim_Gender] ",
+              "dataSource": "SqlServer DESKTOP-EEQM3AQ DWH_Airline_Loyalty"
+            }
+          }
+        ],
+        "annotations": [
+          {
+            "name": "_TM_ExtProp_QueryDefinition",
+            "value": " \t\t\t\tSELECT [dbo].[Dim_Gender].*   FROM [dbo].[Dim_Gender] "
+          },
+          {
+            "name": "_TM_ExtProp_DbTableName",
+            "value": "Dim_Gender"
+          },
+          {
+            "name": "_TM_ExtProp_DbSchemaName",
+            "value": "dbo"
+          }
+        ]
+      },
+      {
+        "name": "Dim_Marital_Status",
+        "columns": [
+          {
+            "name": "ms_id",
+            "dataType": "int64",
+            "sourceColumn": "ms_id",
+            "sourceProviderType": "Integer"
+          },
+          {
+            "name": "Marital_Status",
+            "dataType": "string",
+            "sourceColumn": "Marital_Status",
+            "sourceProviderType": "WChar"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "Dim_Marital_Status",
+            "dataView": "full",
+            "source": {
+              "type": "query",
+              "query": " \t\t\t\tSELECT [dbo].[Dim_Marital_Status].*   FROM [dbo].[Dim_Marital_Status] ",
+              "dataSource": "SqlServer DESKTOP-EEQM3AQ DWH_Airline_Loyalty"
+            }
+          }
+        ],
+        "annotations": [
+          {
+            "name": "_TM_ExtProp_QueryDefinition",
+            "value": " \t\t\t\tSELECT [dbo].[Dim_Marital_Status].*   FROM [dbo].[Dim_Marital_Status] "
+          },
+          {
+            "name": "_TM_ExtProp_DbTableName",
+            "value": "Dim_Marital_Status"
+          },
+          {
+            "name": "_TM_ExtProp_DbSchemaName",
+            "value": "dbo"
+          }
+        ]
+      },
+      {
+        "name": "Fact_Loyalty",
+        "columns": [
+          {
+            "name": "fact_id",
+            "dataType": "int64",
+            "sourceColumn": "fact_id",
+            "sourceProviderType": "BigInt"
+          },
+          {
+            "name": "con_id",
+            "dataType": "string",
+            "sourceColumn": "con_id",
+            "sourceProviderType": "WChar"
+          },
+          {
+            "name": "city_id",
+            "dataType": "int64",
+            "sourceColumn": "city_id",
+            "sourceProviderType": "Integer"
+          },
+          {
+            "name": "gen_id",
+            "dataType": "int64",
+            "sourceColumn": "gen_id",
+            "sourceProviderType": "Integer"
+          },
+          {
+            "name": "education_id",
+            "dataType": "int64",
+            "sourceColumn": "education_id",
+            "sourceProviderType": "Integer"
+          },
+          {
+            "name": "ms_id",
+            "dataType": "int64",
+            "sourceColumn": "ms_id",
+            "sourceProviderType": "Integer"
+          },
+          {
+            "name": "enr_id",
+            "dataType": "int64",
+            "sourceColumn": "enr_id",
+            "sourceProviderType": "Integer"
+          },
+          {
+            "name": "Loyalty_Number",
+            "dataType": "int64",
+            "sourceColumn": "Loyalty_Number",
+            "sourceProviderType": "BigInt"
+          },
+          {
+            "name": "CLV",
+            "dataType": "double",
+            "sourceColumn": "CLV",
+            "sourceProviderType": "Numeric"
+          },
+          {
+            "name": "Total_Flights",
+            "dataType": "int64",
+            "sourceColumn": "Total_Flights",
+            "sourceProviderType": "Integer"
+          },
+          {
+            "name": "Distance",
+            "dataType": "double",
+            "sourceColumn": "Distance",
+            "sourceProviderType": "Numeric"
+          },
+          {
+            "name": "Points_Accumulated",
+            "dataType": "double",
+            "sourceColumn": "Points_Accumulated",
+            "sourceProviderType": "Numeric"
+          },
+          {
+            "name": "Points_Redeemed",
+            "dataType": "double",
+            "sourceColumn": "Points_Redeemed",
+            "sourceProviderType": "Numeric"
+          },
+          {
+            "name": "Dollar_Cost_Points_Redeemed",
+            "dataType": "double",
+            "sourceColumn": "Dollar_Cost_Points_Redeemed",
+            "sourceProviderType": "Numeric"
+          },
+          {
+            "name": "Enrollment_Year_KEY",
+            "dataType": "int64",
+            "sourceColumn": "Enrollment_Year_KEY",
+            "sourceProviderType": "Integer"
+          },
+          {
+            "name": "Enrollment_Month_KEY",
+            "dataType": "int64",
+            "sourceColumn": "Enrollment_Month_KEY",
+            "sourceProviderType": "Integer"
+          },
+          {
+            "name": "Cancellation_Year_KEY",
+            "dataType": "int64",
+            "sourceColumn": "Cancellation_Year_KEY",
+            "sourceProviderType": "Integer"
+          },
+          {
+            "name": "Cancellation_Month_KEY",
+            "dataType": "int64",
+            "sourceColumn": "Cancellation_Month_KEY",
+            "sourceProviderType": "Integer"
+          },
+          {
+            "type": "calculated",
+            "name": "Customer_Status",
+            "dataType": "string",
+            "isDataTypeInferred": true,
+            "expression": [
+              "",
+              "IF(",
+              "    ISBLANK(Fact_Loyalty[Cancellation_Year_KEY]),",
+              "    \"Active\",",
+              "    \"Cancelled\"",
+              ")"
+            ]
+          }
+        ],
+        "partitions": [
+          {
+            "name": "Fact_Loyalty",
+            "dataView": "full",
+            "source": {
+              "type": "query",
+              "query": " \t\t\t\tSELECT [dbo].[Fact_Loyalty].*   FROM [dbo].[Fact_Loyalty] ",
+              "dataSource": "SqlServer DESKTOP-EEQM3AQ DWH_Airline_Loyalty"
+            }
+          }
+        ],
+        "measures": [
+          {
+            "name": "Total Distance",
+            "expression": "SUM([Distance])"
+          },
+          {
+            "name": "Total Flights",
+            "expression": "SUM([Total_Flights])"
+          },
+          {
+            "name": "customer count",
+            "expression": "DISTINCTCOUNT([Loyalty_Number])"
+          },
+          {
+            "name": "Maximum of CLV",
+            "expression": "MAX([CLV])"
+          },
+          {
+            "name": "Total Points_Accumulated",
+            "expression": "SUM([Points_Accumulated])"
+          },
+          {
+            "name": "Total Points_Redeemed",
+            "expression": "SUM([Points_Redeemed])"
+          },
+          {
+            "name": "Maximum of Distance",
+            "expression": "MAX([Distance])"
+          },
+          {
+            "name": "Maximum of Points_Accumulated",
+            "expression": "MAX([Points_Accumulated])"
+          },
+          {
+            "name": "Total  Dollar_Cost_Points_Redeemed",
+            "expression": "SUM([Dollar_Cost_Points_Redeemed])"
+          },
+          {
+            "name": "Redemption Rate",
+            "expression": "DIVIDE([Total Points_Redeemed],[Total Points_Accumulated])"
+          },
+          {
+            "name": "Avg Flights Per Customer",
+            "expression": [
+              "",
+              "DIVIDE(",
+              "    [Total Flights],",
+              "    [Customer Count]",
+              ")"
+            ]
+          },
+          {
+            "name": "Total CLV",
+            "expression": [
+              " ",
+              "SUMX(",
+              "    VALUES(Fact_Loyalty[Loyalty_Number]),",
+              "    CALCULATE(MAX(Fact_Loyalty[CLV]))",
+              ")"
+            ]
+          },
+          {
+            "name": "Avg CLV",
+            "expression": [
+              " ",
+              "DIVIDE(",
+              "    [Total CLV],",
+              "    [customer count],",
+              "    0",
+              ")"
+            ]
+          },
+          {
+            "name": "Churn Rate",
+            "expression": [
+              " ",
+              "DIVIDE(",
+              "    CALCULATE(",
+              "        DISTINCTCOUNT(Fact_Loyalty[Loyalty_Number]),",
+              "        NOT ISBLANK(Fact_Loyalty[Cancellation_Year_KEY])",
+              "    ),",
+              "    [customer count],",
+              "    0",
+              ")"
+            ]
+          },
+          {
+            "name": "Active Customers",
+            "expression": [
+              " ",
+              "CALCULATE(",
+              "    DISTINCTCOUNT(Fact_Loyalty[Loyalty_Number]),",
+              "    ISBLANK(Fact_Loyalty[Cancellation_Year_KEY])",
+              ")",
+              ""
+            ]
+          },
+          {
+            "name": "Count of Loyalty_Number",
+            "expression": "COUNTA([Loyalty_Number])"
+          },
+          {
+            "name": "Cancelled Customers",
+            "expression": [
+              "",
+              "CALCULATE(",
+              "    DISTINCTCOUNT(Fact_Loyalty[Loyalty_Number]),",
+              "    NOT(ISBLANK(Fact_Loyalty[Cancellation_Year_KEY]))",
+              ")"
+            ]
+          },
+          {
+            "name": "Average of Total_Flights",
+            "expression": "AVERAGE([Total_Flights])"
+          },
+          {
+            "name": "Active Customers_month",
+            "expression": [
+              " ",
+              "CALCULATE(",
+              "    DISTINCTCOUNT(Fact_Loyalty[Loyalty_Number]),",
+              "    ISBLANK(Fact_Loyalty[Cancellation_Month_KEY])",
+              ")"
+            ]
+          }
+        ],
+        "annotations": [
+          {
+            "name": "_TM_ExtProp_QueryDefinition",
+            "value": " \t\t\t\tSELECT [dbo].[Fact_Loyalty].*   FROM [dbo].[Fact_Loyalty] "
+          },
+          {
+            "name": "_TM_ExtProp_DbTableName",
+            "value": "Fact_Loyalty"
+          },
+          {
+            "name": "_TM_ExtProp_DbSchemaName",
+            "value": "dbo"
+          }
+        ]
+      }
+    ],
+    "relationships": [
+      {
+        "name": "60dcf48f-3e2c-4db4-b5b2-99f3cc35b5ae",
+        "fromTable": "Dim_City",
+        "fromColumn": "con_id",
+        "toTable": "Dim_Country",
+        "toColumn": "con_id"
+      },
+      {
+        "name": "e500163a-eba9-4079-bdfb-d3d1dc292b04",
+        "fromTable": "Fact_Loyalty",
+        "fromColumn": "Enrollment_Year_KEY",
+        "toTable": "Dim_Date",
+        "toColumn": "Date_Key"
+      },
+      {
+        "name": "56e3ca3c-eb15-4327-838d-c89867fed2cc",
+        "fromTable": "Fact_Loyalty",
+        "fromColumn": "Enrollment_Month_KEY",
+        "toTable": "Dim_Date",
+        "toColumn": "Date_Key",
+        "isActive": false
+      },
+      {
+        "name": "accb0ca4-bf1f-45f6-9fb2-10cf905c066b",
+        "fromTable": "Fact_Loyalty",
+        "fromColumn": "Cancellation_Year_KEY",
+        "toTable": "Dim_Date",
+        "toColumn": "Date_Key",
+        "isActive": false
+      },
+      {
+        "name": "26070659-cd3d-4aa5-aba6-94b5fd8b4838",
+        "fromTable": "Fact_Loyalty",
+        "fromColumn": "Cancellation_Month_KEY",
+        "toTable": "Dim_Date",
+        "toColumn": "Date_Key",
+        "isActive": false
+      },
+      {
+        "name": "765050a4-843d-4db3-b633-cde1dc7035fe",
+        "fromTable": "Fact_Loyalty",
+        "fromColumn": "city_id",
+        "toTable": "Dim_City",
+        "toColumn": "city_id"
+      },
+      {
+        "name": "7aa9ec4c-01b8-4cd5-806c-e12e215147fc",
+        "fromTable": "Fact_Loyalty",
+        "fromColumn": "education_id",
+        "toTable": "Dim_Education",
+        "toColumn": "education_id"
+      },
+      {
+        "name": "c218a8df-1497-48b7-83ce-321002c43d7b",
+        "fromTable": "Fact_Loyalty",
+        "fromColumn": "enr_id",
+        "toTable": "Dim_Enrollment_Type",
+        "toColumn": "enr_id"
+      },
+      {
+        "name": "caaef9c5-0df2-4670-b3f9-899156bfd823",
+        "fromTable": "Fact_Loyalty",
+        "fromColumn": "gen_id",
+        "toTable": "Dim_Gender",
+        "toColumn": "gen_id"
+      },
+      {
+        "name": "7958b1d9-4f5a-44d4-8939-ce781c0acc70",
+        "fromTable": "Fact_Loyalty",
+        "fromColumn": "ms_id",
+        "toTable": "Dim_Marital_Status",
+        "toColumn": "ms_id"
+      }
+    ],
+    "annotations": [
+      {
+        "name": "ClientCompatibilityLevel",
+        "value": "400"
+      }
+    ]
+  }
+}

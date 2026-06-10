@@ -1,0 +1,12 @@
+﻿<?xml version="1.0"?>
+<DTS:ConnectionManager xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:ObjectName="DESKTOP-EEQM3AQ.DWH_Airline_Loyalty"
+  DTS:DTSID="{E025347E-499C-49F4-91D4-B961F0345259}"
+  DTS:CreationName="OLEDB">
+  <DTS:ObjectData>
+    <DTS:ConnectionManager
+      DTS:ConnectRetryCount="1"
+      DTS:ConnectRetryInterval="5"
+      DTS:ConnectionString="Data Source=DESKTOP-EEQM3AQ;Initial Catalog=DWH_Airline_Loyalty;Provider=MSOLEDBSQL.1;Integrated Security=SSPI;Application Name=SSIS-Airline_Loyalty-{E025347E-499C-49F4-91D4-B961F0345259}DESKTOP-EEQM3AQ.DWH_Airline_Loyalty;Auto Translate=False;" />
+  </DTS:ObjectData>
+</DTS:ConnectionManager>
